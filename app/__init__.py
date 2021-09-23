@@ -4,8 +4,8 @@ from flask_mail import Mail
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
-from flask_wtf.csrf import CSRFProtect
 from flask_uploads import IMAGES, UploadSet,configure_uploads
+from flask_wtf.csrf import CSRFProtect
 
 db = SQLAlchemy()
 mail = Mail()
