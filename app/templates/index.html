@@ -3,25 +3,27 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row ">
-        <div class="col-md-9 " style="text-align: center; color: #14213D;height: 500px;width: 100%;">
-            <h1 class="welcome" style="top:200px;position: relative;">Welcome to my Personal Blog</h1>
+        <div class="col-md-9 " style="text-align: center; color: white;height: 500px;width: 100%;background-color:#251e51;">
+            <h1>Hello 😃</h1>
+            <h2 class="welcome" style="top:160px;position: relative;">Welcome to my Personal Blog</h2>
+            <h3  class="intro" style="text-align: center;position: relative;top: 200px;font-size:2rem ;">What unites us as human beings <br>is an urge for happiness which at heart <br>is a yearning for union. ~ Sharon Salzberg</h3>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-8 ">
+        <div class="col-md-6 ">
             {% for blog in blogs.items %}
 
             <hr>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card" style="padding: 5%;background-color: transparent;">
-                           By; <a href="{{url_for('main.user_posts',username = blog.user.username)}}"><span><strong> {{
-                                        blog.user.username | title}}</strong></span> </a>
-                        <!-- </div> -->
-                        <div class="card-title" style="text-align: center;">
+                        By; <a href="{{url_for('main.user_posts',username = blog.user.username)}}"><span><strong> {{
+                                    blog.user.username | title}}</strong></span> </a>
+                        <div class="card-title" style="text-align: left;font-size: 10px;">
 
-                            <h4><a href="{{url_for('main.blog',id = blog.id)}}" class="card-title">{{blog.title |
+                            <h4>Tittle;<br><a href="{{url_for('main.blog',id = blog.id)}}"
+                                    class="card-title">{{blog.title |
                                     upper}}</a></h4>
                         </div>
                         <div class="card-body">
@@ -35,33 +37,39 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-6" style="position: relative;left:700px;bottom: 400px;">
+                <div class="card cardquote" style="background-color: black; color: #ffffff;">
+                    <p class="card-content">{{quote.quote}}</p>
+                    <div class="card-footer">
+                        <p>A quote by: <span style="color: GREY;">{{quote.author}}</span> </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="container">
-            <div class="card cardquote" style="background-color: black; color: #ffffff;">
-                <p class="card-content">{{quote.quote}}</p>
-                <div class="card-footer">
-                    <p>A quote by: <span style="color: GREY;">{{quote.author}}</span> </p>
-                </div>
+</div>
+{% for message in get_flashed_messages() %}
+<div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{ message }}
+</div>
+{% endfor %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="email" style="position: relative;bottom: 160px;width: 50%;">
+                <form class="form-inline ml-2" action="{{url_for('main.subscribe')}}" method="POST">
+                    <div class="md-form form-group">
+                        <label class="white-color"></label>
+                        <input type="email" class="form-control " name="subscriber" placeholder="enter your email..."
+                            required>
+                    </div>
+                    <div class="md-form form-group">
+                        <button class="btn btn-md btn-info" id="subs">Subscribe</button>
+                    </div>
+                </form>
             </div>
-        </div>
-        <div class="container-fluid">
-            {% for message in get_flashed_messages() %}
-            <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            {{ message }}
-            </div>
-            {% endfor %}
-            <form class="form-inline ml-2" action="{{url_for('main.subscribe')}}" method="POST" >
-                <div class="md-form form-group">
-                    <label class="white-color"></label>
-                    <input type="email"  class="form-control " name ="subscriber" placeholder="enter your email..." required>
-                </div>
-                <div class="md-form form-group">
-                    <button class="btn btn-md btn-info" id="subs">Subscribe</button>
-                </div>
-            </form>
         </div>
     </div>
 </div>
