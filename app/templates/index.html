@@ -16,13 +16,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card" style="padding: 5%;background-color: transparent;">
-                        <div class="card-image">
-                            <img class="rounded-circle blog-img mr-10" class="card-img"
-                                src="{{ url_for('static', filename='photos/' + blog.user.profile_pic_path) }}"
-                                height="250" width="250">
-                            <a href="{{url_for('main.user_posts',username = blog.user.username)}}"><span><strong> {{
+                           By; <a href="{{url_for('main.user_posts',username = blog.user.username)}}"><span><strong> {{
                                         blog.user.username | title}}</strong></span> </a>
-                        </div>
+                        <!-- </div> -->
                         <div class="card-title" style="text-align: center;">
 
                             <h4><a href="{{url_for('main.blog',id = blog.id)}}" class="card-title">{{blog.title |

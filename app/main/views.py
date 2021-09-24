@@ -46,7 +46,7 @@ def profile():
         form.email.data = current_user.email
         form.bio.data = current_user.bio
     profile_pic_path = url_for('static',filename = 'photos/'+ current_user.profile_pic_path) 
-    return render_template('profile/profile.html', profile_pic_path=profile_pic_path, form = form,blog=blog)
+    return render_template('profile/profile.html', profile_pic_path=profile_pic_path, form = form,user=current_user.username,blog=blog)
 
 @main.route('/user/<name>/updateprofile', methods = ['POST','GET'])
 @login_required
