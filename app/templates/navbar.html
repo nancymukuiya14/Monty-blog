@@ -1,5 +1,5 @@
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #251e51;color: white;">
+    <nav class="navbar navbar-expand-lg navbar-light text-white" style="background-color: #251e51;color: white;">
         <a class="navbar-brand " href="#" style="font-weight: bold;color: orange;">MONTY</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,10 +21,10 @@
             </ul>
             {% endif %}
 
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto text-white">
                 {% if current_user.is_authenticated %}
 
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown text-white">
                     <a class="nav-link dropdown-toggle text-white" style='margin-right:30px' data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-user"></i>&nbsp;<strong>{{current_user.username}}</strong> </a>
