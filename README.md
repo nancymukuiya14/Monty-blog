@@ -35,10 +35,10 @@
 Thankfully i have no bugs.
 ## Contact Information.
 Incase you have any questions or you would want to work with me contact me via:
-Twitter:@mukuiyakigotho
-Instagram:@hey_its_nancy
-Email:nancykigotho14@gmail.com
-Telephone:0705814086 
+* Twitter:@mukuiyakigotho
+* Instagram:@hey_its_nancy
+* Email:nancykigotho14@gmail.com
+* Telephone:0705814086 
 ## Images
 ![s1](app/static/assets/home.png)
 ![s1](app/static/assets/blog.png)
