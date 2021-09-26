@@ -91,8 +91,6 @@ def blog(id):
 @login_required
 def updateblog(blog_id):
     blog = Blog.query.get(blog_id)
-    if blog.user != current_user:
-        abort(403)
     form = CreateBlog()
     if form.validate_on_submit():
         blog.title = form.title.data
@@ -132,12 +130,10 @@ def subscribe():
     flash('You have subscribed to our blog')
     return redirect(url_for('main.index'))
 
-@main.route('/blog/<blog_id>/delete', methods = ['POST'])
+@main.route('/blog/<blog_id>/delete', methods = ['POST','GET'])
 @login_required
 def delete_post(blog_id):
     blog = Blog.query.get(blog_id) 
-    if blog.user != current_user:
-        abort(403)
     blog.delete()
     flash("You have deleted your Blog succesfully!")
     return redirect(url_for('main.index'))
