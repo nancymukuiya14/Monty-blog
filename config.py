@@ -1,8 +1,9 @@
 import os
 class Config:
     SECRET_KEY = 'ead4ba544d5d4f75942062f71d3b4720';
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:nancy@localhost/monty_blog'
     SQLALCHEMY_TRACK_MODIFICATIONS= False
+    
+    #mail configurations
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
@@ -16,8 +17,8 @@ class Config:
     
 class ProdConfig(Config):
     
-    
- pass
+ SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+
   
 
 
