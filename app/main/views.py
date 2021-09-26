@@ -5,6 +5,7 @@ from .forms import UpdateProfile,CreateBlog
 from .. import db
 from app.requests import get_quotes
 from flask_login import login_required,current_user
+from ..email import mail_message
 import secrets
 import os
 from PIL import Image
@@ -45,7 +46,7 @@ def profile():
         form.username.data = current_user.username
         form.email.data = current_user.email
         form.bio.data = current_user.bio
-    profile_pic_path = url_for('static',filename = 'photos/'+ current_user.profile_pic_path) 
+    profile_pic_path = url_for('static',filename = f'photos/'+ current_user.profile_pic_path) 
     return render_template('profile/profile.html', profile_pic_path=profile_pic_path, form = form,user=current_user.username,blog=blog)
 
 @main.route('/user/<name>/updateprofile', methods = ['POST','GET'])
@@ -74,8 +75,8 @@ def new_blog():
         blog = Blog(title=title,content=content,user_id=user_id)
         blog.save()
         for subscriber in subscribers:
-            subscriber.send_email()
-        return redirect(url_for('main.index'))
+            # subscriber.send_email()
+         return redirect(url_for('main.index'))
         flash('You Posted a new Blog')
         
     return render_template('newblog.html', form = form)
@@ -114,13 +115,14 @@ def comment(blog_id):
     new_comment = Comment(comment = comment, user_id = current_user._get_current_object().id, blog_id=blog_id)
     new_comment.save()
     return redirect(url_for('main.blog',id = blog.id))
+@main.route('/comment/delete/<comment_id>', methods = ['Post','GET'])
+@login_required
 def delete_comment(comment_id):
-    if blog.user != current_user:
-        abort(403)
     comments = Comment.query.get(comment_id)
-    comments.delete()
+    db.session.delete(comments)
+    db.session.commit()
     flash("You have deleted your comment succesfully!")
-    return redirect(url_for('main.blog'))
+    return redirect(url_for('main.index'))
 
 @main.route('/subscribe',methods = ['POST','GET'])
 def subscribe():
