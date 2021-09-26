@@ -39,6 +39,10 @@ Twitter:@mukuiyakigotho
 Instagram:@hey_its_nancy
 Email:nancykigotho14@gmail.com
 Telephone:0705814086 
-
+## Images
+![s1](app/static/assets/home.png)
+![s1](app/static/assets/blog.png)
+![s1](app/static/assets/profile.png)
+![s1](app/static/assets/forms.png)
 ## License
 MIT licence
